@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <!-- 引入刚刚下载的 E/echarts.min.jsCharts 文件 -->
+    <script src="js/echarts.js"></script>
+  </head>
+  <body>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <div id="main" style="width: 700px;height:500px;"></div>
+    <script type="text/javascript">
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById('main'));
+
+      // 指定图表的配置项和数据
+      
+      option = {
+  title: {
+    text: '公众整体的低碳行为认知情况',
+    subtext: '数据统计',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item',
+    formatter: '{a} <br/>{b} : {c} ({d}%)'
+  },
+  legend: {
+    left: 'center',
+    top: 'bottom',
+    data: [
+      'rose1',
+      'rose2',
+      'rose3',
+      'rose4',
+      'rose5',
+    ]
+  },
+  toolbox: {
+    show: true,
+    feature: {
+      mark: { show: true },
+      dataView: { show: true, readOnly: false },
+      restore: { show: true },
+      saveAsImage: { show: true }
+    }
+  },
+  series: [
+    {
+      name: 'Radius Mode',
+      type: 'pie',
+      radius: [20, 140],
+      center: ['25%', '50%'],
+      roseType: 'radius',
+      itemStyle: {
+        borderRadius: 5
+      },
+      label: {
+        show: false
+      },
+      emphasis: {
+        label: {
+          show: true
+        }
+      },
+      data: [
+        { value: 40, name: '非常清楚' },
+        { value: 33, name: '有了解' },
+        { value: 28, name: '不太清楚' },
+        { value: 22, name: '不了解' },
+        { value: 20, name: '不关注' },
+      ]
+    },
+    {
+      name: 'Area Mode',
+      type: 'pie',
+      radius: [20, 140],
+      center: ['75%', '50%'],
+      roseType: 'area',
+      itemStyle: {
+        borderRadius: 5
+      },
+      data: [
+        { value: 30, name: '绿色出行践行度' },
+        { value: 28, name: '环保公益践行度' },
+        { value: 26, name: '绿色消费践行度' },
+        { value: 24, name: '循环回收践行度' },
+        { value: 22, name: '减少资源消耗践行度' },
+      ]
+    }
+  ]
+};
+
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+    </script>
+  </body>
+</html>
